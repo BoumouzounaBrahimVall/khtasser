@@ -31,6 +31,11 @@ To clone a repository from GitHub to your local machine, use the following comma
 ```bash
 git clone <repository_URL>
 ```
+
+### create your branch locally 
+```bash
+git checkout -b <your_branch_name>
+```
 ### Switching to a Branch
 To switch to a specific branch within the repository, execute the following command:
 ```bash
