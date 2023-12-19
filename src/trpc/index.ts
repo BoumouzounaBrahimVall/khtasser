@@ -1,14 +1,14 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/dist/types/server';
-import { publicProcedure, router } from './trpc';
+import { privateProcedure, publicProcedure, router } from './trpc';
 import { TRPCError } from '@trpc/server';
 import { db } from '@/db';
- 
-
 //initialize our main router instance in which we'll later add procedures to (API logic)
 export const appRouter = router({  
+  
   authCallback: publicProcedure.query(async () => {
 
-   
+    console.log('Executing authCallback procedure');
+
    const { getUser } = getKindeServerSession()
    const user =await getUser()
     
@@ -23,7 +23,7 @@ export const appRouter = router({
     })
 
     if (!dbUser) {
-      // create user in db
+      // create user in db  haaaaaaaaaaaadi khassha tkhdem
       await db.user.create({
         data: {
           id: user.id,
@@ -35,9 +35,16 @@ export const appRouter = router({
 
         return {success:true}
   }),
-  test:publicProcedure.query(()=>{
-    return 'hello'
-  })
+  //hadiiii makatrje3ch l files
+  getUserFiles: privateProcedure.query(async ({ ctx }) => {
+    const { userId } = ctx
+    return await db.file.findMany({
+      where: {
+        userId,
+      }
+    })
+  }),
+
 });
  
 // Export type router type signature,

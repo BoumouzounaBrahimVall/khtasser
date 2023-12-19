@@ -10,9 +10,8 @@ const router = useRouter()
 
 const searchParams=useSearchParams()
 const origin=searchParams.get('origin')
-/*const {data}=trpc.test.useQuery()
-console.log("heyyy"+data)*/
-const res= trpc.authCallback.useQuery(undefined, {
+
+ trpc.authCallback.useQuery(undefined, {
     onSuccess:({ success }:any) => {
 
       if (success) {
@@ -22,9 +21,9 @@ const res= trpc.authCallback.useQuery(undefined, {
       }
     },
     onError: (err) => {
+      console.log('no')
 
       if (err.data?.code === 'UNAUTHORIZED') {
-        console.log('no')
 
         router.push('/sign-in')
       }
@@ -32,7 +31,6 @@ const res= trpc.authCallback.useQuery(undefined, {
     retry: true,//send the request again untill the router send something successfull
     retryDelay: 500,//check if the user is synchro to our db every 500 ms
   })
-  console.log(res)
   return (
     <div className='w-full mt-24 flex justify-center'>
       <div className='flex flex-col items-center gap-2'>
