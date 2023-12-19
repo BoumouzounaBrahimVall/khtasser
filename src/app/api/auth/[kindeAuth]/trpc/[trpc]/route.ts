@@ -1,5 +1,7 @@
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 import {appRouter} from '@/trpc'
+
+//adapter to allow next js to use trpc
 const handler = (req: Request) =>
   fetchRequestHandler({
     endpoint: '/api/trpc',
