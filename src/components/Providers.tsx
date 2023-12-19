@@ -1,3 +1,4 @@
+//to specify that it's a client side component
 "use client";
 
 import { PropsWithChildren, useState } from "react";
@@ -16,9 +17,9 @@ const Providers =({children}:PropsWithChildren)=>{
  })
  )
  return(
-    <trpc.Provider client={trpcClient} queryClient={queryClient}> 
-    <QueryClientProvider client={queryClient}>  {children}</QueryClientProvider>
-  
+    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+    <>{/* QueryClientProvider to be able to use trpc and react query independtly */}</>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </trpc.Provider>
  )
 }
