@@ -7,12 +7,12 @@ import { db } from '@/db';
 //initialize our main router instance in which we'll later add procedures to (API logic)
 export const appRouter = router({  
   authCallback: publicProcedure.query(async () => {
-    console.log('here?')
-    return {success:true}
-    //const { getUser } = getKindeServerSession()
-    //const user =await getUser()
+
+   
+   const { getUser } = getKindeServerSession()
+   const user =await getUser()
     
-   /* if (!user||!user.id || !user.email)
+   if (!user||!user.id || !user.email)
       throw new TRPCError({ code: 'UNAUTHORIZED' })
 
     // check if the user is in the database
@@ -33,7 +33,7 @@ export const appRouter = router({
     }
 
 
-        return {success:true}*/
+        return {success:true}
   }),
   test:publicProcedure.query(()=>{
     return 'hello'
