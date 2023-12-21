@@ -11,7 +11,7 @@ describe("Input component", () => {
   it("renders without crashing", () => {
     render(<Input />);
   });
-gi
+
   it("renders with the provided className", () => {
     const { container } = render(<Input className="custom-input" />);
     expect(container.firstChild).toHaveClass("custom-input");

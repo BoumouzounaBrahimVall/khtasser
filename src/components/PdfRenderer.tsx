@@ -32,16 +32,16 @@ import {
 
 import SimpleBar from 'simplebar-react'
 import PdfFullscreen from './PdfFullscreen'
-
+// Setting worker source for PDF
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
-
+// Interface for PdfRendererProps
 interface PdfRendererProps {
   url: string
 }
-
+// PdfRenderer component definition
 const PdfRenderer = ({ url }: PdfRendererProps) => {
   const { toast } = useToast()
-
+  // State management for various properties
   const [numPages, setNumPages] = useState<number>()
   const [currPage, setCurrPage] = useState<number>(1)
   const [scale, setScale] = useState<number>(1)
@@ -49,9 +49,9 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
   const [renderedScale, setRenderedScale] = useState<
     number | null
   >(null)
-
+  // Checking if loading is in progress
   const isLoading = renderedScale !== scale
-
+  // Validator schema for custom page input
   const CustomPageValidator = z.object({
     page: z
       .string()
@@ -63,7 +63,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
   type TCustomPageValidator = z.infer<
     typeof CustomPageValidator
   >
-
+  // useForm hook for handling form operations
   const {
     register,
     handleSubmit,
