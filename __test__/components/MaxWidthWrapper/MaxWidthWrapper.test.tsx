@@ -10,6 +10,7 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 describe("MaxWidthWrapper component", () => {
   it("renders without crashing", () => {
     render(<MaxWidthWrapper />);
+    
   });
 
   it("renders MaxWidthWrapper with the provided className", () => {
